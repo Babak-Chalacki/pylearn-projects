@@ -3,7 +3,7 @@
 
 
 ```markdown
- JavaScript vs Python Project Comparison
+ #JavaScript vs Python Project Comparison
 
 This repository showcases four projects implemented in both JavaScript and Python to compare the two languages:
 
