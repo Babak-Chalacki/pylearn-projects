@@ -1,11 +1,9 @@
 **project 1**
 
-
-
 ```markdown
- #JavaScript vs Python Project Comparison
+# JavaScript vs Python vs PHP Project Comparison
 
-This repository showcases four projects implemented in both JavaScript and Python to compare the two languages:
+This repository showcases four projects implemented in JavaScript, Python, and PHP to compare the three languages:
 
 ## Projects
 
@@ -27,15 +25,18 @@ This repository showcases four projects implemented in both JavaScript and Pytho
     average_grades.py
     degrees_radians.py
     bmi_calculator.py
+/php/
+    calculator.php
+    average_grades.php
+    degrees_radians.php
+    bmi_calculator.php
 ```
 
 ## How to Run
 
 - **JavaScript**: Use Node.js or a web browser.
 - **Python**: Run with Python 3.
+- **PHP**: Run with PHP CLI or a web server.
 
 ## License
-
-This project is licensed under the MIT License.
-
 ```
