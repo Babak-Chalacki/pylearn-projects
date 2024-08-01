@@ -1,6 +1,6 @@
 **project 1**
 
-Certainly! Here’s a more concise version of the README file:
+
 
 ```markdown
 # JavaScript vs Python Project Comparison
