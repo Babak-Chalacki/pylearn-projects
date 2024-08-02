@@ -28,9 +28,9 @@ else:
  elif op == "sqrt":
     result = math.sqrt(a)
  elif op == "cot":
-    result  = math.cot(a)
+    result  = 1 / math.tan(a)
  elif op == "factorial":
-    result = math.factorial(a)
+    result = math.factorial(int(a))
 
 print(result)
 
