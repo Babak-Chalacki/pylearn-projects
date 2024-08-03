@@ -11,6 +11,7 @@ This repository showcases four projects implemented in JavaScript, Python, and P
 2. **Average Grades**: Calculates the average of student grades.
 3. **Degrees/Radians Converter**: Converts degrees to radians and vice versa.
 4. **BMI Calculator**: Calculates Body Mass Index.
+4. **triangle**: Calculates sides.
 
 ## Structure
 
@@ -20,16 +21,19 @@ This repository showcases four projects implemented in JavaScript, Python, and P
     average_grades.js
     degrees_radians.js
     bmi_calculator.js
+    triangle.js
 /python/
     calculator.py
     average_grades.py
     degrees_radians.py
     bmi_calculator.py
+    triangle.py
 /php/
     calculator.php
     average_grades.php
     degrees_radians.php
     bmi_calculator.php
+    triangle.php
 ```
 
 ## How to Run
