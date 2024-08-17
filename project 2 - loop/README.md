@@ -86,6 +86,3 @@ Generates the first `n` elements of the Fibonacci sequence based on user input.
 - Run the program.
 - Enter the number of Fibonacci elements to generate.
 
----
-
-Feel free to explore and modify these projects to enhance your Python programming skills!
