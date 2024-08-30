@@ -6,5 +6,4 @@ while True:
 
 
     for i in range(user_num):
-        print("\n")
         print("*#" , end="")
