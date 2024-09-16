@@ -20,4 +20,4 @@ for follower in profile.get_followers():
 f = open("followers.txt","w")
 for follower in new_followers:
     f.write(follower + "\n")
-f.close     
+f.close()     
