@@ -1,6 +1,6 @@
 # Python Projects
 
-This repository includes simple Python functions to print various patterns.
+This file includes simple Python functions to print various patterns.
 
 ## Functions
 
