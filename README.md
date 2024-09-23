@@ -299,3 +299,27 @@ This program takes a list as input and removes any duplicate elements from it.
 Enter a list of elements separated by commas: 2, 3, 6, 7, 7, 14, 2, 7
 Original List: [2, 3, 6, 7, 7, 14, 2, 7]
 List with Duplicates Removed: [3, 6, 14, 2, 7]
+
+
+   **project 5**
+
+   # Python Projects
+
+This repository includes simple Python functions to print various patterns.
+
+## Functions
+
+1. **Print Chessboard**: `print_chessboard(n, m)`
+2. **Print Multiplication Table**: `print_multiplication_table(n, m)`
+3. **Print Diamond**: `print_diamond(n)`
+4. **Print Pascal's Triangle**: `print_pascal_triangle(n)`
+
+## Usage
+
+Save the code in a Python file and call the functions with desired parameters:
+
+```python
+print_chessboard(4, 5)
+print_multiplication_table(5, 5)
+print_diamond(7)
+print_pascal_triangle(5)
