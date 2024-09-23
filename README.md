@@ -300,12 +300,13 @@ Enter a list of elements separated by commas: 2, 3, 6, 7, 7, 14, 2, 7
 Original List: [2, 3, 6, 7, 7, 14, 2, 7]
 List with Duplicates Removed: [3, 6, 14, 2, 7]
 
+---
 
    **project 5**
 
    # Python Projects
 
-This repository includes simple Python functions to print various patterns.
+This file includes simple Python functions to print various patterns.
 
 ## Functions
 
