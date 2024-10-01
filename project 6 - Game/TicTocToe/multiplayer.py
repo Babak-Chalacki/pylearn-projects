@@ -1,15 +1,23 @@
 
-
 game_board =[['-','-','-'],
              ['-','-','-'],
              ['-','-','-']]
 
 
+RESET = "\033[0m" 
+RED = "\033[31m"  
+GREEN = "\033[32m"
+
 def show_board():
     for row in game_board:
-       for cell in row:
-           print(cell,end='')
-       print()
+        for cell in row:
+            if cell == 'X':
+                print(RED + cell + RESET, end=' ')  
+            elif cell == 'O':
+                print(GREEN + cell + RESET, end=' ') 
+            else:
+                print(cell, end=' ')
+        print()
        
 def player_symbol(symbol):
     while True:
@@ -61,7 +69,7 @@ def check_game():
         print("X wins")
         return True
     elif (game_board[0][0] == 'O' and game_board[1][1] == 'O' and game_board[2][2] == 'O') or \
-         (game_board[0][2] == 'O' and game_board[1][1] == 'O' and game_board[2][0] == 'O'):
+         (game_board[0][2] == 'O' and game_board[1][1] == 'O' and game_board[2][0] == 'O'):  
         print("O wins")
         return True
     if all(cell in ['X', 'O'] for row in game_board for cell in row):
@@ -79,18 +87,4 @@ def main():
         if check_game():
             break
                           
-        
-         
-user_choice = int(input("pc=> 1 , two player=> 2 : "))
-if user_choice == 1:
-    print("ok")
-    
-if user_choice == 2:
-    show_board()
-    main()
- 
- 
-    
-       
-    
- 
+   
