@@ -342,6 +342,3 @@ This repository contains a Python implementation of the classic TicTacToe game. 
 - **Multiplayer Mode**: Play against another player (Player vs. Player).
 - **Colorful Tokens**: Players can choose different colors for their tokens (X and O) using a chosen library.
 - **Timer**: Displays the elapsed time after the game ends.
-
-## Installation
-To run this project, ensure you have Python installed on your machine. You can clone this repository and run the main script:
