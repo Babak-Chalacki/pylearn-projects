@@ -325,6 +325,7 @@ print_multiplication_table(5, 5)
 print_diamond(7)
 print_pascal_triangle(5)
 
+```
 
 ---
 
