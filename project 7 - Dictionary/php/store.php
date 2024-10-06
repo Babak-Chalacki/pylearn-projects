@@ -134,11 +134,9 @@ function buy() {
         if ($product['code'] == $user_input) {
             if ($quantity <= $product['count']) {
                 $total_cost = number_format($quantity * $product['price'], 2);
-                // Update count
                 $product['count'] -= $quantity;
                 echo "You bought {$quantity} of {$product['name']} for \${$total_cost}.\n";
 
-                // Remove product if out of stock
                 if ($product['count'] == 0) {
                     remove();
                 }
@@ -156,7 +154,7 @@ function buy() {
 function make_QRcode() {
     global $PRODUCTS;
 
-    require_once 'phpqrcode/qrlib.php'; // Include the QR code library
+    require_once 'phpqrcode/qrlib.php';
 
     $user_choose = readline('Product ID => ');
     
@@ -179,7 +177,6 @@ function set_to_database() {
         return;
     }
 
-    // Save products to database.txt
     file_put_contents('database.txt', '');
     
     foreach ($PRODUCTS as $product) {
@@ -189,14 +186,12 @@ function set_to_database() {
    echo "Data saved to database.\n";
 }
 
-// Main program loop
 read_from_database();
 echo "Data Loaded\n";
 
 while (true) {
    show_menu();
    
-   // Get user choice
    try {
        $user_input = readline('What is your choice => ');
        $choice = intval($user_input);
