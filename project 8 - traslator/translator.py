@@ -31,13 +31,13 @@ def translate_english_to_persian():
     
     print(output.strip()) 
     
-    x = gtts.gTTS(output.strip(), lang="fa", slow=False) 
+    x = gtts.gTTS(output.strip(), lang="en", slow=False) 
     x.save('voice.mp3')
 
 def translate_persian_to_english():
     user_text = input("sentence : ")
     sentences = user_text.split('.')
-    output = ''
+    output = '' 
     
     for sentence in sentences:
         user_splits = sentence.strip().split(' ')
