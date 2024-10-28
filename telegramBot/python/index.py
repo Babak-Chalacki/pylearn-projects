@@ -1,5 +1,7 @@
 import telebot
 import random
+import os
+import gtts
 from telebot import types
 from persiantools.jdatetime import JalaliDate 
 bot = telebot.TeleBot("7465142195:AAF22px6dMaFjLomfnWkg6XZCI8CBuN-_Vc", parse_mode=None)
@@ -31,6 +33,39 @@ def calculate_age(message):
         bot.send_message(message.chat.id, f"سن شما: {age} سال")
     except Exception as e:
         bot.send_message(message.chat.id, "لطفاً تاریخ صحیحی وارد کنید.")
+        
+        
+        
+        
+        
+        
+@bot.message_handler(commands=['voice'])
+def voice_handler(message):
+    bot.reply_to(message,"جمله خود را به صورت انگلیسی وارد کنید")
+ 
+@bot.message_handler(func=lambda m:True)
+def voice_creator(message):
+ try:
+        tts = gtts.gTTS(message.text.strip(), lang="en", slow=False) 
+        tts.save('voice.mp3')
+        
+        with open('voice.mp3', 'rb') as audio_file:
+            bot.send_audio(message.chat.id, audio_file)
+        
+        os.remove('voice.mp3')
+        
+ except Exception as e:
+        bot.reply_to(message, "خطا در پردازش: " + str(e))
+
+    
+        
+        
+        
+        
+        
+        
+        
+        
 current_number = None
 @bot.message_handler(commands=["game"])
 @bot.message_handler(func=lambda m: m.text == "شروع دوباره")
@@ -71,12 +106,7 @@ def guess_handler(message):
 
 
 
-@bot.message_handler(commands=['voice'])
-def voice_handler(message):
-    bot.reply_to(message,"جمله خود را به صورت انگلیسی وارد کنید")
-   
-   
-   
+
    
    
    
