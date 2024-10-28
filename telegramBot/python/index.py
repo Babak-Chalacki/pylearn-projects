@@ -11,6 +11,7 @@ def send_welcome(message):
     bot.reply_to(message, f"{first_name} خوش آمدی!")
     bot.send_message(message.chat.id,"برای بازی کردن => /game \n محاسبه تاریخ تولد => /age \n تبدیل متن به صدا => /voice \n نمایش بزرگترین عدد => /max \n نمایش بزرگترین اندیس => /argmax")
 @bot.message_handler(commands=['menu'])
+@bot.message_handler(func=lambda m:m.text == "منو")
 def menu(message):
     bot.send_message(message.chat.id,"برای بازی کردن => /game \n محاسبه تاریخ تولد => /age \n تبدیل متن به صدا => /voice \n نمایش بزرگترین عدد => /max \n نمایش بزرگترین اندیس => /argmax")
     
@@ -34,14 +35,57 @@ def calculate_age(message):
     except Exception as e:
         bot.send_message(message.chat.id, "لطفاً تاریخ صحیحی وارد کنید.")
         
+    
+    
+@bot.message_handler(commands=['argmax'])
+def voice_handler(message):
+    bot.reply_to(message,"رشته اعداد خود را وارد کنید")
+   
+   
+@bot.message_handler(func=lambda m: True)
+def find_argmax_index(message):
+    try:
+        number_list = [int(num) for num in message.text.split(',')]
+        
+        max_value = max(number_list)
+        max_index = number_list.index(max_value)
+        
+        bot.send_message(message.chat.id, f"اندیس بزرگترین عدد ({max_value}): {max_index}")
+    except ValueError:
+        bot.send_message(message.chat.id, "لطفاً اعداد صحیح وارد کنید.")
         
         
+    
+@bot.message_handler(commands=['max'])
+def voice_handler(message):
+    bot.reply_to(message,"رشته اعداد خود را وارد کنید")
+    
+@bot.message_handler(func=lambda m: True)
+def find_max_number(message):
+    try:
+        number_list = [int(num) for num in message.text.split(',')]
+        
+        max_value = max(number_list)
+        
+        bot.send_message(message.chat.id, f"بزرگترین عدد: {max_value}")
+    except ValueError:
+        bot.send_message(message.chat.id, "لطفاً اعداد صحیح وارد کنید.")
+
+    
+    
+    
+    
+
+      
         
         
         
 @bot.message_handler(commands=['voice'])
 def voice_handler(message):
-    bot.reply_to(message,"جمله خود را به صورت انگلیسی وارد کنید")
+    marker_keys = types.ReplyKeyboardMarkup(resize_keyboard=True,row_width=1)
+    menuKey = types.KeyboardButton("منو")
+    marker_keys.add(menuKey)
+    bot.reply_to(message,"جمله خود را به صورت انگلیسی وارد کنید",reply_markup=marker_keys)
  
 @bot.message_handler(func=lambda m:True)
 def voice_creator(message):
@@ -51,20 +95,16 @@ def voice_creator(message):
         
         with open('voice.mp3', 'rb') as audio_file:
             bot.send_audio(message.chat.id, audio_file)
-        
         os.remove('voice.mp3')
+        empty_key = types.ReplyKeyboardRemove()
+        bot.send_message(message.chat.id,"برای ارسال دوباره /voice را وارد کنید",reply_markup=empty_key)
         
  except Exception as e:
         bot.reply_to(message, "خطا در پردازش: " + str(e))
 
     
         
-        
-        
-        
-        
-        
-        
+
         
 current_number = None
 @bot.message_handler(commands=["game"])
@@ -99,42 +139,5 @@ def guess_handler(message):
      
     
     
-    
-    
-    
-
-
-
-
-
-   
-   
-   
-   
-   
-   
-   
-    
-@bot.message_handler(commands=['max'])
-def voice_handler(message):
-    bot.reply_to(message,"رشته اعداد خود را وارد کنید")
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-@bot.message_handler(commands=['argmax'])
-def voice_handler(message):
-    bot.reply_to(message,"رشته اعداد خود را وارد کنید")
-   
-   
-   
-   
-   
-    
+  
 bot.infinity_polling()
