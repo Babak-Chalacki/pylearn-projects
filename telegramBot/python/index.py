@@ -13,33 +13,34 @@ def menu(message):
     bot.send_message(message.chat.id,"برای بازی کردن => /game \n محاسبه تاریخ تولد => /age \n تبدیل متن به صدا => /voice \n نمایش بزرگترین عدد => /max \n نمایش بزرگترین اندیس => /argmax")
     
 @bot.message_handler(commands=["age"])
-def exchange_age(message):
-        bot.send_message(message.chat.id,"تاریخ خود را به صورت خورشیدی وارد کنید")
+def ask_for_birth_date(message):
+    bot.send_message(message.chat.id, "لطفاً تاریخ تولد خود را به صورت خورشیدی وارد کنید (سال/ماه/روز)")
+    bot.send_message(message.chat.id,"به عنوان مثال 1382/10/27")
 
 @bot.message_handler(func=lambda message: message.text.count('/') == 2 and all(part.isdigit() for part in message.text.split('/')))
 def calculate_age(message):
     try:
-        birth_date_str = message.text.split('/')
-        year = int(birth_date_str[0])
-        month = int(birth_date_str[1])
-        day = int(birth_date_str[2])
+        year, month, day = map(int, message.text.split('/'))
         birthdate = JalaliDate(year, month, day)
         today = JalaliDate.today()
+        
         age = today.year - birthdate.year
         if (today.month, today.day) < (birthdate.month, birthdate.day):
             age -= 1
+            
         bot.send_message(message.chat.id, f"سن شما: {age} سال")
-    
     except Exception as e:
-        bot.send_message(message.chat.id, "تاریخ وارد شده نامعتبر است. لطفا دوباره تلاش کنید.")
-
+        bot.send_message(message.chat.id, "لطفاً تاریخ صحیحی وارد کنید.")
 current_number = None
 @bot.message_handler(commands=["game"])
+@bot.message_handler(func=lambda m: m.text == "شروع دوباره")
 def play_game(message):
     global current_number
     current_number = random.randint(0,100)
-    bot.send_message(message.chat.id,f"send a number between 0 and 100")
-
+    marker_key = types.ReplyKeyboardMarkup(resize_keyboard=True,row_width=1)
+    newGame = types.KeyboardButton("شروع دوباره")
+    marker_key.add(newGame)
+    bot.send_message(message.chat.id,f"یک شمار بین 0 تا 100 انتخاب کنید",reply_markup=marker_key)
 @bot.message_handler(func=lambda m:True)
 def guess_handler(message):
     global current_number
@@ -55,6 +56,8 @@ def guess_handler(message):
         else:
             bot.send_message(message.chat.id,"آفرین")
             current_number = None
+            empty_keyboard = types.ReplyKeyboardRemove()
+            bot.send_message(message.chat.id, "بازی تمام شد.", reply_markup=empty_keyboard)
             
     except ValueError:
         bot.send_message(message.chat.id,"لطفا شمار مناسب وارد کنید")
