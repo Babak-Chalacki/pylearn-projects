@@ -34,7 +34,8 @@ This repository showcases four projects implemented in JavaScript, Python, and P
     degrees_radians.php
     bmi_calculator.php
     triangle.php
-```
+    
+```markdown
 
 ## How to Run
 
